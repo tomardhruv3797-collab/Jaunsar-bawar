@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JBSA Command — 2026–27</title>
+<style>
+:root{
+  --green:#123c32; --green2:#1d5b4b; --ivory:#f7f4ec; --slate:#52615d;
+  --blue:#718da0; --gold:#b99855; --white:#fff; --line:#e5e3db;
+  --danger:#b94b4b; --warn:#a87322; --shadow:0 12px 35px rgba(18,60,50,.08);
+}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:#f5f6f2;color:#1f2926}
+button,input,select,textarea{font:inherit} button{cursor:pointer}
+.app{display:flex;min-height:100vh}.sidebar{width:250px;background:var(--green);color:white;padding:24px 16px;position:fixed;inset:0 auto 0 0;z-index:5}
+.brand{font-weight:800;font-size:21px;letter-spacing:-.5px;padding:4px 10px 26px}.brand small{display:block;font-size:11px;font-weight:500;opacity:.65;margin-top:5px}
+.nav button{display:block;width:100%;border:0;background:transparent;color:#dce9e4;text-align:left;padding:11px 12px;border-radius:10px;margin:3px 0}
+.nav button.active,.nav button:hover{background:rgba(255,255,255,.1);color:#fff}.nav button span{display:inline-block;width:26px;opacity:.75}
+.main{margin-left:250px;width:calc(100% - 250px);padding:28px 34px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:1.4px;color:var(--green2);font-weight:800}.title{font-size:31px;font-weight:800;margin:5px 0}.subtitle{color:#6d7874}.avatar{background:var(--gold);color:white;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-weight:800}
+.grid{display:grid;gap:16px}.metrics{grid-template-columns:repeat(4,1fr)}.two{grid-template-columns:1.5fr 1fr}.three{grid-template-columns:repeat(3,1fr)}
+.card{background:white;border:1px solid var(--line);border-radius:16px;padding:19px;box-shadow:var(--shadow)}.metric{min-height:115px}.metric .label{color:#73807b;font-size:13px}.metric .num{font-size:29px;font-weight:800;margin-top:9px}.metric .delta{font-size:12px;color:var(--green2);margin-top:5px}
+.section-title{font-size:16px;font-weight:800;margin:0 0 15px}.list{display:grid;gap:10px}.item{padding:12px 0;border-bottom:1px solid #eee}.item:last-child{border-bottom:0}.row{display:flex;justify-content:space-between;gap:12px;align-items:center}.muted{color:#77817e;font-size:13px}.badge{display:inline-flex;padding:5px 8px;border-radius:999px;background:#edf2ef;color:var(--green2);font-size:11px;font-weight:800}.badge.warn{background:#fff3dc;color:var(--warn)}.badge.red{background:#fde8e8;color:var(--danger)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:white;padding:9px 12px;border-radius:9px;font-weight:700;color:#34413d}.btn.primary{background:var(--green);color:white;border-color:var(--green)}.btn.gold{background:var(--gold);color:white;border-color:var(--gold)}
+.progress{height:7px;background:#edf0ec;border-radius:10px;overflow:hidden}.progress i{display:block;height:100%;background:var(--green2);border-radius:10px}
+.page{display:none}.page.active{display:block}.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:12px 8px;border-bottom:1px solid #eee;font-size:13px}.table th{color:#76817d;font-size:11px;text-transform:uppercase;letter-spacing:.7px}
+.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;padding:10px;border:1px solid var(--line);border-radius:9px;background:#fff}.field textarea{min-height:90px}
+.toast{position:fixed;right:24px;bottom:24px;background:var(--green);color:white;padding:12px 16px;border-radius:10px;display:none;z-index:20}
+@media(max-width:900px){.sidebar{width:75px;padding:18px 10px}.brand{font-size:0}.brand:before{content:"JB";font-size:20px}.brand small{display:none}.nav button{font-size:0;text-align:center}.nav button span{width:auto;font-size:18px}.main{margin-left:75px;width:calc(100% - 75px);padding:22px 16px}.metrics{grid-template-columns:repeat(2,1fr)}.two,.three{grid-template-columns:1fr}}
+@media(max-width:600px){.metrics{grid-template-columns:1fr 1fr}.title{font-size:24px}.formgrid{grid-template-columns:1fr}.main{padding:16px}.card{padding:15px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand">JBSA Command<small>Jaunsar Bawar Students Association · 2026–27</small></div>
+  <nav class="nav">
+    <button class="active" onclick="showPage('dashboard',this)"><span>⌂</span>Dashboard</button>
+    <button onclick="showPage('tasks',this)"><span>✓</span>Tasks</button>
+    <button onclick="showPage('events',this)"><span>◈</span>Events</button>
+    <button onclick="showPage('members',this)"><span>♙</span>Members</button>
+    <button onclick="showPage('content',this)"><span>✦</span>Content</button>
+    <button onclick="showPage('culture',this)"><span>◌</span>Culture</button>
+    <button onclick="showPage('finance',this)"><span>₹</span>Finance</button>
+    <button onclick="showPage('meetings',this)"><span>▤</span>Meetings</button>
+    <button onclick="showPage('documents',this)"><span>▧</span>Documents</button>
+    <button onclick="showPage('settings',this)"><span>⚙</span>Settings</button>
+  </nav>
+</aside>
+
+<main class="main">
+<div id="dashboard" class="page active">
+  <div class="top"><div><div class="eyebrow">President Control Centre</div><div class="title">Good afternoon, Dhruv</div><div class="subtitle">JBSA Command · Sunday, 16 August 2026</div></div><div class="avatar">DT</div></div>
+  <div class="grid metrics">
+    <div class="card metric"><div class="label">Society health</div><div class="num">86%</div><div class="progress"><i style="width:86%"></i></div></div>
+    <div class="card metric"><div class="label">Active members</div><div class="num">148</div><div class="delta">+18 this month</div></div>
+    <div class="card metric"><div class="label">Upcoming events</div><div class="num">4</div><div class="delta">2 need review</div></div>
+    <div class="card metric"><div class="label">Current balance</div><div class="num">₹42,850</div><div class="delta">After approved expenses</div></div>
+  </div>
+  <br>
+  <div class="grid two">
+    <section class="card"><h3 class="section-title">Needs My Attention</h3><div class="list">
+      <div class="item row"><div><b>Uttarakhand Cultural Evening</b><div class="muted">Event proposal · Tamanna Sharma</div></div><span class="badge warn">Review</span></div>
+      <div class="item row"><div><b>Venue advance — ₹12,000</b><div class="muted">Finance approval · Event Convenor</div></div><span class="badge warn">Approval</span></div>
+      <div class="item row"><div><b>Independence Day Reel</b><div class="muted">President review · Aman Rana</div></div><span class="badge">Content</span></div>
+      <div class="item row"><div><b>Campus volunteer list</b><div class="muted">Due yesterday · North Campus</div></div><span class="badge red">Overdue</span></div>
+    </div></section>
+    <section class="card"><h3 class="section-title">Quick Actions</h3><div class="actions">
+      <button class="btn primary" onclick="openTask()">+ Assign Task</button><button class="btn" onclick="openEvent()">+ Create Event</button>
+      <button class="btn" onclick="toast('Approval inbox opened')">Review Approvals</button><button class="btn" onclick="toast('Meeting workspace opened')">Start Meeting</button>
+      <button class="btn gold" onclick="toast('Document upload ready')">Upload Document</button>
+    </div><br><h3 class="section-title">Official Contact</h3><div class="muted">JBSA administrative email</div><b>jbsadelhi@gmail.com</b></section>
+  </div>
+  <br>
+  <div class="grid two"><section class="card"><h3 class="section-title">Upcoming Events</h3><div class="list">
+    <div class="item row"><div><b>Freshers Welcome 2026</b><div class="muted">28 Aug · North Campus</div></div><span class="badge">Planning</span></div>
+    <div class="item row"><div><b>Jaunsar-Bawar Cultural Evening</b><div class="muted">12 Sep · Delhi</div></div><span class="badge warn">President review</span></div>
+    <div class="item row"><div><b>Heritage Documentation Drive</b><div class="muted">20 Sep · South Campus</div></div><span class="badge">Approved</span></div>
+  </div></section><section class="card"><h3 class="section-title">Recent Activity</h3><div class="list">
+    <div class="item"><b>Dhruv approved Membership Drive</b><div class="muted">12 min ago</div></div>
+    <div class="item"><b>Ravina uploaded a caption</b><div class="muted">42 min ago</div></div>
+    <div class="item"><b>Tamanna created an event</b><div class="muted">1 hr ago</div></div>
+  </div></section></div>
+</div>
+
+<div id="tasks" class="page">
+<div class="top"><div><div class="eyebrow">Operations</div><div class="title">Task Management</div><div class="subtitle">Track ownership, deadlines and completion.</div></div><button class="btn primary" onclick="openTask()">+ New Task</button></div>
+<section class="card"><table class="table"><thead><tr><th>Task</th><th>Owner</th><th>Priority</th><th>Deadline</th><th>Status</th></tr></thead><tbody id="taskRows">
+<tr><td><b>Finalize cultural event venue</b><br><span class="muted">Event · Cultural Evening</span></td><td>Tamanna</td><td><span class="badge warn">HIGH</span></td><td>18 Aug</td><td><span class="badge">IN PROGRESS</span></td></tr>
+<tr><td><b>North Campus volunteer list</b></td><td>Anushka</td><td><span class="badge red">URGENT</span></td><td>15 Aug</td><td><span class="badge red">OVERDUE</span></td></tr>
+<tr><td><b>Instagram Independence Reel</b></td><td>Aman</td><td><span class="badge">MEDIUM</span></td><td>19 Aug</td><td><span class="badge warn">PRESIDENT REVIEW</span></td></tr>
+</tbody></table></section>
+</div>
+
+<div id="events" class="page">
+<div class="top"><div><div class="eyebrow">Event Command Centre</div><div class="title">Events</div><div class="subtitle">From proposal to post-event archive.</div></div><button class="btn primary" onclick="openEvent()">+ Create Event</button></div>
+<div class="grid three"><div class="card"><div class="muted">PLANNING</div><h3>Freshers Welcome 2026</h3><p>28 Aug · North Campus</p><span class="badge">PLANNING</span></div><div class="card"><div class="muted">REVIEW</div><h3>Cultural Evening</h3><p>12 Sep · Delhi</p><span class="badge warn">PRESIDENT REVIEW</span></div><div class="card"><div class="muted">APPROVED</div><h3>Heritage Documentation Drive</h3><p>20 Sep · South Campus</p><span class="badge">APPROVED</span></div></div>
+</div>
+
+<div id="members" class="page">
+<div class="top"><div><div class="eyebrow">Membership</div><div class="title">Members</div><div class="subtitle">148 active members · role-based visibility.</div></div><button class="btn primary" onclick="toast('Member registration form opened')">+ Add Member</button></div>
+<section class="card"><table class="table"><thead><tr><th>Name</th><th>College</th><th>Campus</th><th>Status</th></tr></thead><tbody>
+<tr><td><b>Sample Member</b></td><td>Dayal Singh College</td><td>South</td><td><span class="badge">ACTIVE</span></td></tr><tr><td><b>Sample Volunteer</b></td><td>Hindu College</td><td>North</td><td><span class="badge">ACTIVE</span></td></tr></tbody></table></section>
+</div>
+
+<div id="content" class="page"><div class="top"><div><div class="eyebrow">Content & Social Media</div><div class="title">Content Command Centre</div><div class="subtitle">Draft → review → approval → publish.</div></div><button class="btn primary" onclick="toast('Content draft created')">+ New Content</button></div><div class="grid three">
+<div class="card"><div class="muted">PRESIDENT REVIEW</div><h3>Independence Day Reel</h3><p class="muted">Aman Rana · Reel</p><span class="badge warn">REVIEW</span></div>
+<div class="card"><div class="muted">DESIGN</div><h3>Cultural Evening Poster</h3><p class="muted">Ravina Chauhan · Poster</p><span class="badge">DESIGN</span></div>
+<div class="card"><div class="muted">SCHEDULED</div><h3>Welcome Post</h3><p class="muted">Social Media · 27 Aug</p><span class="badge">SCHEDULED</span></div>
+</div></div>
+
+<div id="culture" class="page"><div class="top"><div><div class="eyebrow">Flagship Archive</div><div class="title">Jaunsar-Bawar Heritage Archive</div><div class="subtitle">Preserve culture with consent, sources and verification.</div></div><button class="btn primary" onclick="toast('Archive entry form opened')">+ New Archive Entry</button></div><div class="grid three">
+<div class="card"><h3>Folk Songs</h3><p class="muted">12 verified records</p></div><div class="card"><h3>Traditional Clothing</h3><p class="muted">8 records · 3 public</p></div><div class="card"><h3>Oral Histories</h3><p class="muted">6 interviews · consent tracked</p></div>
+</div></div>
+
+<div id="finance" class="page"><div class="top"><div><div class="eyebrow">Finance</div><div class="title">Society Ledger</div><div class="subtitle">Approval-controlled income and expenditure.</div></div><button class="btn primary" onclick="toast('Expense request created')">+ Expense Request</button></div><div class="grid metrics"><div class="card metric"><div class="label">Opening balance</div><div class="num">₹35,000</div></div><div class="card metric"><div class="label">Income</div><div class="num">₹28,500</div></div><div class="card metric"><div class="label">Approved expenses</div><div class="num">₹20,650</div></div><div class="card metric"><div class="label">Closing balance</div><div class="num">₹42,850</div></div></div><br><section class="card"><h3 class="section-title">Pending approvals</h3><div class="item row"><div><b>Venue advance</b><div class="muted">₹12,000 · Cultural Evening</div></div><span class="badge warn">PRESIDENT APPROVAL</span></div></section></div>
+
+<div id="meetings" class="page"><div class="top"><div><div class="eyebrow">Meetings</div><div class="title">Minutes & Action Items</div></div><button class="btn primary" onclick="toast('Meeting workspace started')">+ Start Meeting</button></div><section class="card"><h3>Core Team Planning Meeting</h3><p class="muted">17 Aug 2026 · 6:00 PM</p><p>Agenda: Freshers event, cultural evening, membership drive and finance.</p><span class="badge">3 action items</span></section></div>
+
+<div id="documents" class="page"><div class="top"><div><div class="eyebrow">Institutional Memory</div><div class="title">Documents</div><div class="subtitle">Secure records with versioning and access levels.</div></div><button class="btn gold" onclick="toast('Document upload ready')">Upload Document</button></div><section class="card"><table class="table"><thead><tr><th>Document</th><th>Category</th><th>Access</th><th>Version</th></tr></thead><tbody><tr><td><b>JBSA Constitution</b></td><td>Constitution</td><td>Core Team</td><td>v2</td></tr><tr><td><b>2026–27 Core Team Minutes</b></td><td>Meeting Minutes</td><td>President</td><td>v1</td></tr></tbody></table></section></div>
+
+<div id="settings" class="page"><div class="top"><div><div class="eyebrow">Administration</div><div class="title">Settings</div><div class="subtitle">Organisation configuration.</div></div></div><section class="card"><div class="formgrid">
+<div class="field"><label>Organisation</label><input value="Jaunsar Bawar Students Association"></div>
+<div class="field"><label>Session</label><input value="2026–27"></div>
+<div class="field"><label>Official Email</label><input value="jbsadelhi@gmail.com"></div>
+<div class="field"><label>President</label><input value="Dhruv Singh Tomar"></div>
+</div><br><button class="btn primary" onclick="toast('Settings saved')">Save Configuration</button></section></div>
+</main>
+</div>
+
+<div id="toast" class="toast"></div>
+<script>
+function showPage(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2200)}
+function openTask(){const title=prompt('Task title');if(title){document.getElementById('taskRows').insertAdjacentHTML('afterbegin',`<tr><td><b>${title.replaceAll('<','&lt;')}</b></td><td>Dhruv</td><td><span class="badge">MEDIUM</span></td><td>—</td><td><span class="badge">NOT STARTED</span></td></tr>`);toast('Task created')}}
+function openEvent(){const name=prompt('Event name');if(name){toast('Event "'+name+'" created — connect to backend to persist it.')}}
+</script>
+</body>
+</html>
